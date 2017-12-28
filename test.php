@@ -55,9 +55,12 @@ class Article implements JsonSerializable {
 
     public function setAuthor($author)
     {
-      if (is_object($author))
+      if (is_object($author)){
         $this->author = $author;
+    } else {
+      echo 'Author must be an object';
     }
+  }
 
    public function getAuthor()
    {
@@ -159,7 +162,7 @@ return $LogicException;
   }
 }
 
-$author= new Author('foo@bar.com', 'jack');
+$author = new Author('foo@bar.com', 'jack');
 $article = new Article;
 $article->setAuthor($author);
 $article->setTitle('hello world');
