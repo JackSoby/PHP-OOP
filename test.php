@@ -22,17 +22,17 @@ Add any methods to Article that are deemed necessary.
  */
 
 class Author {
-    protected $email;
-    protected $name;
-    public function __construct($email, $name) {
-      $this->email = $email;
-      $this->name = $name;
-    }
-    public function getName()
-    {
-        return $this->name;
-    }
+  protected $email;
+  protected $name;
 
+  public function __construct($email, $name) {
+    $this->email = $email;
+    $this->name = $name;
+  }
+  public function getName()
+  {
+      return $this->name;
+  }
 }
 
 
@@ -47,9 +47,9 @@ class Article implements JsonSerializable {
 
     public function jsonSerialize() {
       return [
-        'Author: ' => $this->author->getName(),
-        'Title: ' => $this->title,
-        'Body:' => $this->body,
+        'Author ' => $this->author->getName(),
+        'Title ' => $this->title,
+        'Body' => $this->body,
     ];
       }
 
@@ -61,7 +61,7 @@ class Article implements JsonSerializable {
 
    public function getAuthor()
    {
-       return $this->author->getName();
+     return $this->author->getName();
    }
     /**
      * Gets the title
@@ -100,7 +100,6 @@ class Article implements JsonSerializable {
     public function setTitle($title)
     {
         $this->title = $title;
-        //  jsonSerialize ($this->$title);
     }
     /**
      * Sets the body parameter
@@ -112,12 +111,10 @@ class Article implements JsonSerializable {
     public function setBody($body)
     {
         $this->body = $body;
-        //  jsonSerialize ($this->$body);
     }
     public function setStatus($status)
     {
         $this->status = $status;
-        //  jsonSerialize ($this->$body);
     }
     /**
      * Validate the object.
@@ -136,7 +133,6 @@ class Article implements JsonSerializable {
      */
     public function validate()
     {
-
     if ($this->title == NULL ) {
     $LogicException = "\nplease input a title\n";
     }
@@ -159,17 +155,8 @@ class Article implements JsonSerializable {
       $LogicException .= "HTML cannot be submitted\n";
     }
 
-//abstract public mixed jsonSerialize ()
 return $LogicException;
-
-    }
-
-
-
-
-
-
-
+  }
 }
 
 $author= new Author('foo@bar.com', 'jack');
